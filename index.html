@@ -4,29 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css\style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:wght@300i;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/af4b456c34.js" crossorigin="anonymous"></script>
-    <script defer src="../Mogo_1/Js/app.js" crossorigin="anonymous"></script>
+    <script defer src="Js/app.js" crossorigin="anonymous"></script>
     <title>Mogo - test html page</title>
 </head>
 <body>
-    <header class="header">
+    <header class="header" id="header">
         <div class="container">
             <div class="header__inner">
                 <div class="header__logo">MoGo</div>
 
                     <nav class="nav">
-                        <a class="nav__link active" href="#">card</a>
-                        <a class="nav__link" href="#">Service</a>
-                        <a class="nav__link" href="#">Work</a>
-                        <a class="nav__link" href="#">Blog</a>
-                        <a class="nav__link" href="#">Contact</a>
+                        <a class="nav__link" href="#" data-scroll="about">About</a>
+                        <a class="nav__link" href="#" data-scroll="services">Service</a>
+                        <a class="nav__link" href="#" data-scroll="work">Work</a>
+                        <a class="nav__link" href="#" data-scroll="blog">Blog</a>
+                        <a class="nav__link" href="#" data-scroll="footer">Contact</a>
                         <a class="nav__link" href="#"><i class="fas fa-shopping-cart"></i></a>
                         <a class="nav__link" href="#"><i class="fas fa-search"></i></a>
                     </nav>
-                    <button class="nav-toggle">
+                    <button class="nav-toggle" id="nav-toggle">
                         <span class="nav-toggle__item">Menu</span>
                     </button>
             </div>
@@ -34,7 +34,10 @@
     </header>
     
     <div class="page">
-        <div class="intro">
+
+
+        <!-- Intro -->
+        <div class="intro" id="intro">
             <div class="container">
                 <div class="intro__inner">
                     <h2 class="intro__suptitle">Creative template</h2>
@@ -56,7 +59,7 @@
                         </div>
                         <div class="slider__item">
                             <span class="slider__num">03</span>
-                            <span class="slider__text">card</span>
+                            <span class="slider__text">About</span>
                         </div>
                         <div class="slider__item">
                             <span class="slider__num">04</span>
@@ -67,12 +70,14 @@
             </div>
         </div>
         
-        <section class="section">
+
+        <!-- About -->
+        <section class="section" id="about">
             <div class="container">
 
                 <header class="section__header">
                     <h3 class="section__suptitle">What we do</h3>
-                    <h2 class="section__title">Story card us</h2>
+                    <h2 class="section__title">Story about us</h2>
                     <div class="section__text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p></div>
                 </header>
 
@@ -106,6 +111,8 @@
             </div>
         </section>
 
+
+        <!-- Statistic -->
         <div class="statistic">
             <div class="container">
             <div class="statistic__wrapper">
@@ -134,7 +141,9 @@
             </div>
         </div>
 
-        <section class="section">
+
+        <!-- Services -->
+        <section class="section" id="services">
             <div class="container">
 
                 <header class="section__header">
@@ -177,6 +186,8 @@
             </div> <!-- container -->
         </section>
 
+
+        <!-- Devices -->
         <section class="section section--devices">
             <div class="container">
                 
@@ -193,6 +204,8 @@
             </div>
         </section>
 
+
+        <!-- Services-photo -->
         <section class="section">
             <div class="container">
                 
@@ -240,6 +253,8 @@
             </div>
         </section>
 
+
+        <!-- Reviews-1 -->
         <div class="section section--dark">
             <div class="container">           
                 <div class="reviews">
@@ -257,6 +272,8 @@
             </div>
         </div>
 
+
+        <!-- Team -->
         <section class="section">
             <div class="container">
 
@@ -356,6 +373,8 @@
             </div> <!-- container -->
         </section>
 
+
+        <!-- Logos -->
         <section class="section section--dark">
             <div class="container">
                 <div class="logos">
@@ -381,7 +400,9 @@
             </div>
         </section>
 
-        <section class="section">
+
+        <!-- Works -->
+        <section class="section" id="work">
             <div class="container">
                 <header class="section__header">
                     <h3 class="section__suptitle">What we do</h3>
@@ -463,6 +484,8 @@
             </div> <!--./works-->
         </section>
 
+
+        <!-- Reviews-2 -->
         <div class="section">
             <div class="container">           
                 <div class="reviews">
@@ -480,6 +503,8 @@
             </div>
         </div>
 
+
+        <!-- Clients -->
         <section class="section section--clients">
             <div class="container">
                 <header class="section__header">
@@ -529,7 +554,9 @@
             </div>
         </section>
 
-        <section class="section">
+
+        <!-- Blog -->
+        <section class="section" id="blog">
             <div class="container">
                 
                 <header class="section__header">
@@ -626,6 +653,8 @@
             </div> <!-- /.container -->
         </section>
 
+
+        <!-- map -->
         <section class="section section--map">
             <div class="container">
                 <div class="map">
@@ -635,7 +664,9 @@
             </div>
         </section>
 
-        <footer class="footer">
+
+        <!-- Footer -->
+        <footer class="footer" id="footer">
             <div class="container">
 
                 <div class="footer__inner">
