@@ -1,7 +1,6 @@
 "use strict"
 
-/* add closing mobile main menu, when user clicked some link
-   add paddings inner elements, in scroll (to beauty scroll, to show all block) (? offsetHeight-clientHeight)
+/* add paddings to inner elements, in scroll (to beauty scroll, to show all block) (? offsetHeight-clientHeight)
 
    add accordion;
 */
@@ -10,12 +9,14 @@
 /* Constants */
 const header = document.getElementById("header"),
       navToggle = document.getElementById("nav-toggle"),
+      nav = document.getElementById("nav"),
       intro = document.getElementById("intro");
 
 
 
 /* Burger button skin */
 function toggleBtnBurger() {
+  if(event.target.closest(".nav__link")) console.log(true);
   navToggle.classList.toggle("active");
 }
 
@@ -29,6 +30,11 @@ function toggleMobileMenu() {
 }
 
 navToggle.addEventListener("click", toggleMobileMenu);
+
+/* Closing mobile menu */
+nav.addEventListener("click", toggleMobileMenu);
+nav.addEventListener("click", toggleBtnBurger);
+
 
 
 
@@ -57,7 +63,6 @@ function smoothScroll() {
   event.preventDefault();
   let elem = document.getElementById(event.target.dataset.scroll);
   let elemStartPos = elem.getBoundingClientRect().top + window.scrollY;
-  console.log(elem.getBoundingClientRect().top, window.scrollY)
   let startPos = window.pageYOffset;
   let distance = elemStartPos - startPos;
   let duration = 1000;
@@ -79,8 +84,6 @@ function smoothScroll() {
   };
 
   requestAnimationFrame(animation);
-
-  setTimeout( () => console.log(elem.getBoundingClientRect().top, window.scrollY), 1500)
 }
 
 // function smoothScroll() {
