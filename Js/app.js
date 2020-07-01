@@ -1,8 +1,7 @@
 "use strict"
 
-/* add paddings to inner elements, in scroll (to beauty scroll, to show all block) (? offsetHeight-clientHeight)
-
-   add accordion;
+/* 
+   add slider;
 */
 
 
@@ -37,11 +36,10 @@ nav.addEventListener("click", toggleBtnBurger);
 
 
 
-
 /* Fixed header menu */
 function toggleFixHeader() {
-  let scrollH = window.pageYOffset;
-  let introH = intro.clientHeight - 10;
+  let scrollH = window.pageYOffset,
+      introH = intro.clientHeight - header.offsetHeight;
   
   if (scrollH >= introH && !header.classList.contains("fixed")) {
     header.classList.add("fixed");
@@ -61,12 +59,12 @@ function smoothScroll() {
   if (!event.target.dataset.scroll) return;
   
   event.preventDefault();
-  let elem = document.getElementById(event.target.dataset.scroll);
-  let elemStartPos = elem.getBoundingClientRect().top + window.scrollY;
-  let startPos = window.pageYOffset;
-  let distance = elemStartPos - startPos;
-  let duration = 1000;
-  let startTime = null;
+  let elem = document.getElementById(event.target.dataset.scroll),
+      elemStartPos = elem.getBoundingClientRect().top + window.scrollY - header.offsetHeight,
+      startPos = window.pageYOffset,
+      distance = elemStartPos - startPos,
+      duration = 1000,
+      startTime = null;
 
   function animation(currentTime) {
     if(startTime === null) startTime = currentTime;
@@ -86,14 +84,23 @@ function smoothScroll() {
   requestAnimationFrame(animation);
 }
 
-// function smoothScroll() {
-//   event.preventDefault();
-//   let elem = document.getElementById(event.target.dataset.scroll);
-//   elem.scrollIntoView({behavior:"smooth"})
-// }
-
 document.addEventListener("click", smoothScroll)
 
 
 
 /* Accordion */
+function accordionToggle(pressedClassName, changedClassName) {
+  let elem = event.target.closest(pressedClassName);
+  if(!elem) return;
+  event.preventDefault();
+
+  elem.closest(changedClassName).classList.toggle("active");
+}
+
+document.addEventListener("click", () => {
+  accordionToggle(".accordion__header", ".accordion__item")
+})
+
+
+
+/* Slider */
