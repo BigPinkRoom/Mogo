@@ -1,10 +1,5 @@
 "use strict"
 
-/* 
-   add slider;
-*/
-
-
 /* Constants */
 const header = document.getElementById("header"),
       navToggle = document.getElementById("nav-toggle"),
@@ -103,61 +98,30 @@ document.addEventListener("click", () => {
 
 
 
-/* Slider */
-//  let itemLeft = 0;
-
-// function carouselReview() {
-//   if (!event.target.classList.contains("reviews__btn")) return;
-
-//   let showContainer = document.getElementById("reviews__show-container");
-
-//   let showContainerItems = showContainer.children;
-//   let summWidthItems = (showContainerItems.length - 1) * -100;
-//   let firstItem = showContainer.firstElementChild;
-
-//   if (event.target.classList.contains("reviews__btn--prev")) {
-//     if (!itemLeft) return
-//     firstItem.classList.add("services__item--transition");
-
-//     itemLeft += 100;
-//     firstItem.style.marginLeft = `${itemLeft}%`;
-//     firstItem.addEventListener("transitionend", () => firstItem.classList.remove("services__item--transition"));
-//   }
-
-//   if (event.target.classList.contains("reviews__btn--next")) {
-//     if (itemLeft <= summWidthItems) return
-//     firstItem.classList.add("services__item--transition");
-
-//     itemLeft -= 100;
-//     firstItem.style.marginLeft = `${itemLeft}%`;
-//     firstItem.addEventListener("transitionend", () => firstItem.classList.remove("services__item--transition"));
-//   }
-
-// }
+/* Slider Dark */
 
 class Сarousel {
-  constructor(btnClass, showContainer, transitionClass) {
-    this.btnClass = btnClass;
-    this.showContainer = document.getElementById(showContainer);
-    this.firstItem = document.getElementById(showContainer).firstElementChild;
-    this.summWidthItems = (this.showContainer.children.length - 1) * -100;
+  constructor(btnId, showContainerId, transitionClass) {
+    this.btnId = btnId;
+    this.showContainerId = document.getElementById(showContainerId);
+    this.firstItem = document.getElementById(showContainerId).firstElementChild;
+    this.summWidthItems = (this.showContainerId.children.length - 1) * -100;
     this.transitionClass = transitionClass;
     this.itemLeft = 0;
   }
 
   move() {
     this.e = event.target;
-    if(this.e.classList.contains(`${this.btnClass}--prev`)) {
-      console.log(this.itemLeft)
+    
+    if(this.e.id == (`${this.btnId}--prev`)) {
       if(!this.itemLeft) return
-      
+
       this.movePrev()
     }
 
-    if(this.e.classList.contains(`${this.btnClass}--next`)) {
-      console.log(this.itemLeft)
+    if(this.e.id == (`${this.btnId}--next`)) {
       if(this.itemLeft <= this.summWidthItems) return
-      
+
       this.moveNext()
     }
   }
@@ -181,6 +145,12 @@ class Сarousel {
   }
 }
 
-const carouselReview = new Сarousel("reviews__btn", "reviews__show-container", "services__item--transition");
+const carouselReviewDark = new Сarousel("dark reviews__btn", "dark reviews__show-container", "services__item--transition");
 
-document.addEventListener("click", () => carouselReview.move());
+document.addEventListener("click", () => carouselReviewDark.move());
+
+
+/* Slider White*/
+const carouselReviewWhite = new Сarousel("white reviews__btn", "white reviews__show-container", "services__item--transition");
+
+document.addEventListener("click", () => carouselReviewWhite.move());
