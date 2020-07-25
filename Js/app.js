@@ -104,3 +104,83 @@ document.addEventListener("click", () => {
 
 
 /* Slider */
+//  let itemLeft = 0;
+
+// function carouselReview() {
+//   if (!event.target.classList.contains("reviews__btn")) return;
+
+//   let showContainer = document.getElementById("reviews__show-container");
+
+//   let showContainerItems = showContainer.children;
+//   let summWidthItems = (showContainerItems.length - 1) * -100;
+//   let firstItem = showContainer.firstElementChild;
+
+//   if (event.target.classList.contains("reviews__btn--prev")) {
+//     if (!itemLeft) return
+//     firstItem.classList.add("services__item--transition");
+
+//     itemLeft += 100;
+//     firstItem.style.marginLeft = `${itemLeft}%`;
+//     firstItem.addEventListener("transitionend", () => firstItem.classList.remove("services__item--transition"));
+//   }
+
+//   if (event.target.classList.contains("reviews__btn--next")) {
+//     if (itemLeft <= summWidthItems) return
+//     firstItem.classList.add("services__item--transition");
+
+//     itemLeft -= 100;
+//     firstItem.style.marginLeft = `${itemLeft}%`;
+//     firstItem.addEventListener("transitionend", () => firstItem.classList.remove("services__item--transition"));
+//   }
+
+// }
+
+class Сarousel {
+  constructor(btnClass, showContainer, transitionClass) {
+    this.btnClass = btnClass;
+    this.showContainer = document.getElementById(showContainer);
+    this.firstItem = document.getElementById(showContainer).firstElementChild;
+    this.summWidthItems = (this.showContainer.children.length - 1) * -100;
+    this.transitionClass = transitionClass;
+    this.itemLeft = 0;
+  }
+
+  move() {
+    this.e = event.target;
+    if(this.e.classList.contains(`${this.btnClass}--prev`)) {
+      console.log(this.itemLeft)
+      if(!this.itemLeft) return
+      
+      this.movePrev()
+    }
+
+    if(this.e.classList.contains(`${this.btnClass}--next`)) {
+      console.log(this.itemLeft)
+      if(this.itemLeft <= this.summWidthItems) return
+      
+      this.moveNext()
+    }
+  }
+
+  movePrev() {
+    this.firstItem.classList.add(this.transitionClass);
+
+    this.itemLeft += 100;
+    this.firstItem.style.marginLeft = `${this.itemLeft}%`;
+    
+    this.firstItem.addEventListener("transitionend", () => this.firstItem.classList.remove(this.transitionClass)); // add bind, for is correct working "this"
+  }
+
+  moveNext() {
+    this.firstItem.classList.add(this.transitionClass);
+
+    this.itemLeft -= 100;
+    this.firstItem.style.marginLeft = `${this.itemLeft}%`;
+    
+    this.firstItem.addEventListener("transitionend", () => this.firstItem.classList.remove(this.transitionClass)); // add bind, for is correct working "this"
+  }
+}
+
+const carouselReview = new Сarousel("reviews__btn", "reviews__show-container", "services__item--transition");
+
+document.addEventListener("click", () => carouselReview.move());
