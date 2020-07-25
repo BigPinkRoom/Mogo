@@ -1,5 +1,3 @@
-"use strict"
-
 /* Constants */
 const header = document.getElementById("header"),
       navToggle = document.getElementById("nav-toggle"),
@@ -9,12 +7,12 @@ const header = document.getElementById("header"),
 
 
 /* Burger button skin */
-function toggleBtnBurger() {
+function toggleButtonBurger() {
   if(event.target.closest(".nav__link")) console.log(true);
   navToggle.classList.toggle("active");
 }
 
-navToggle.addEventListener("click", toggleBtnBurger);
+navToggle.addEventListener("click", toggleButtonBurger);
 
 
 
@@ -27,19 +25,19 @@ navToggle.addEventListener("click", toggleMobileMenu);
 
 /* Closing mobile menu */
 nav.addEventListener("click", toggleMobileMenu);
-nav.addEventListener("click", toggleBtnBurger);
+nav.addEventListener("click", toggleButtonBurger);
 
 
 
 /* Fixed header menu */
 function toggleFixHeader() {
-  let scrollH = window.pageYOffset,
-      introH = intro.clientHeight - header.offsetHeight;
+  let scrollHeight = window.pageYOffset,
+      introHeight = intro.clientHeight - header.offsetHeight;
   
-  if (scrollH >= introH && !header.classList.contains("fixed")) {
+  if (scrollHeight >= introHeight && !header.classList.contains("fixed")) {
     header.classList.add("fixed");
   } 
-  if (scrollH < introH && header.classList.contains("fixed")) {
+  if (scrollHeight < introHeight && header.classList.contains("fixed")) {
     header.classList.remove("fixed");
   }
 }
@@ -54,26 +52,26 @@ function smoothScroll() {
   if (!event.target.dataset.scroll) return;
   
   event.preventDefault();
-  let elem = document.getElementById(event.target.dataset.scroll),
-      elemStartPos = elem.getBoundingClientRect().top + window.scrollY - header.offsetHeight,
-      startPos = window.pageYOffset,
-      distance = elemStartPos - startPos,
+  let element = document.getElementById(event.target.dataset.scroll),
+      elementStartPosition = element.getBoundingClientRect().top + window.scrollY - header.offsetHeight,
+      startPosition = window.pageYOffset,
+      distance = elementStartPosition - startPosition,
       duration = 1000,
       startTime = null;
 
   function animation(currentTime) {
     if(startTime === null) startTime = currentTime;
     let timeElapsed = currentTime - startTime;
-    let run = ease(timeElapsed, startPos, distance, duration);
+    let run = ease(timeElapsed, startPosition, distance, duration);
     window.scrollTo(0, run);
     if (timeElapsed < duration) requestAnimationFrame(animation);
   }
 
-  function ease(t, b, c, d) {
-    t /= d/2;
-    if (t < 1) return c/2*t*t + b;
-    t--;
-    return -c/2 * (t*(t-2) - 1) + b;
+  function ease(timeElapsed, startPosition, distance, duration) {
+    timeElapsed /= duration / 2;
+    if (timeElapsed < 1) return distance / 2 * timeElapsed * timeElapsed + startPosition;
+    timeElapsed--;
+    return -distance / 2 * (timeElapsed * (timeElapsed - 2) - 1) + startPosition;
   };
 
   requestAnimationFrame(animation);
@@ -85,11 +83,11 @@ document.addEventListener("click", smoothScroll)
 
 /* Accordion */
 function accordionToggle(pressedClassName, changedClassName) {
-  let elem = event.target.closest(pressedClassName);
-  if(!elem) return;
+  let element = event.target.closest(pressedClassName);
+  if(!element) return;
   event.preventDefault();
 
-  elem.closest(changedClassName).classList.toggle("active");
+  element.closest(changedClassName).classList.toggle("active");
 }
 
 document.addEventListener("click", () => {
@@ -101,8 +99,8 @@ document.addEventListener("click", () => {
 /* Slider Dark */
 
 class Сarousel {
-  constructor(btnId, showContainerId, transitionClass) {
-    this.btnId = btnId;
+  constructor(buttonId, showContainerId, transitionClass) {
+    this.buttonId = buttonId;
     this.showContainerId = document.getElementById(showContainerId);
     this.firstItem = document.getElementById(showContainerId).firstElementChild;
     this.summWidthItems = (this.showContainerId.children.length - 1) * -100;
@@ -113,13 +111,13 @@ class Сarousel {
   move() {
     this.e = event.target;
     
-    if(this.e.id == (`${this.btnId}--prev`)) {
+    if(this.e.id == (`${this.buttonId}--prev`)) {
       if(!this.itemLeft) return
 
       this.movePrev()
     }
 
-    if(this.e.id == (`${this.btnId}--next`)) {
+    if(this.e.id == (`${this.buttonId}--next`)) {
       if(this.itemLeft <= this.summWidthItems) return
 
       this.moveNext()
