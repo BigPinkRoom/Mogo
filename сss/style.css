@@ -19,6 +19,8 @@ a:focus,a:active{outline: none;}
 
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
 }
 
 hr {
@@ -385,6 +387,7 @@ button::-moz-focus-inner {padding:0;border:0;}
 
 .section__suptitle {
     font-size: 24px;
+    font-weight: 600;
     font-family: 'Kaushan Script', cursive;
 }
 
@@ -553,8 +556,12 @@ button::-moz-focus-inner {padding:0;border:0;}
     text-transform: uppercase;
 }
 
-.services__text {
+.services__text {    
     font-size: 14px;
+}
+
+.services__text p {
+    margin: 0;
 }
 
 
@@ -921,10 +928,6 @@ button::-moz-focus-inner {padding:0;border:0;}
     display: block;
 }
 
-.clients__info {
-
-}
-
 .clients__title {
     margin-bottom: 5px;
 }
@@ -950,6 +953,9 @@ button::-moz-focus-inner {padding:0;border:0;}
     color: #999;
 }
 
+.clients__text p {
+    margin: 0;
+}
 
 /* Blog */
 .blog {
@@ -1024,6 +1030,8 @@ button::-moz-focus-inner {padding:0;border:0;}
 }
 
 .blog__text {
+    margin: 0;
+
     font-family: 'Roboto', sans-serif;
     color: #999
 }
