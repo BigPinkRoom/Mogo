@@ -1,3 +1,4 @@
+(function() {
 /* Constants */
 const header = document.getElementById("header"),
       navToggle = document.getElementById("nav-toggle"),
@@ -152,3 +153,4 @@ document.addEventListener("click", () => carouselReviewDark.move());
 const carouselReviewWhite = new Сarousel("white reviews__btn", "white reviews__show-container", "services__item--transition");
 
 document.addEventListener("click", () => carouselReviewWhite.move());
+})()
