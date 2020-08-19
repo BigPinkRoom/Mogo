@@ -9,7 +9,6 @@ const header = document.getElementById("header"),
 
 /* Burger button skin */
 function toggleButtonBurger() {
-  if(event.target.closest(".nav__link")) console.log(true);
   navToggle.classList.toggle("active");
 }
 
