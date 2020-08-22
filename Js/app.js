@@ -6,28 +6,12 @@ const header = document.getElementById("header"),
       intro = document.getElementById("intro");
 
 
-
-/* Burger button skin */
-function toggleButtonBurger() {
-  navToggle.classList.toggle("active");
-}
-
-navToggle.addEventListener("click", toggleButtonBurger);
-
-
-
-/* active mobile menu */
+/* Burger menu toggle */
 function toggleMobileMenu() {
   header.classList.toggle("active");
 }
 
 navToggle.addEventListener("click", toggleMobileMenu);
-
-/* Closing mobile menu */
-nav.addEventListener("click", toggleMobileMenu);
-nav.addEventListener("click", toggleButtonBurger);
-
-
 
 /* Fixed header menu */
 function toggleFixHeader() {
