@@ -1,32 +1,38 @@
 (function() {
 /* Constants */
-const header = document.getElementById("header"),
-      navToggle = document.getElementById("nav-toggle"),
-      nav = document.getElementById("nav"),
-      intro = document.getElementById("intro");
+const header = document.getElementById('header'),
+      navToggle = document.getElementById('nav-toggle'),
+      nav = document.getElementById('nav'),
+      intro = document.getElementById('intro');
 
 
 /* Burger menu toggle */
 function toggleMobileMenu() {
-  header.classList.toggle("active");
+  header.classList.toggle('active');
 }
 
-navToggle.addEventListener("click", toggleMobileMenu);
+function hideHeaderActiveBurger() {
+  if (event.target.closest('.nav__link') && event.target.closest('.header.active')) header.classList.toggle('active');
+  return
+}
+
+navToggle.addEventListener('click', toggleMobileMenu);
+document.addEventListener('click', hideHeaderActiveBurger);
 
 /* Fixed header menu */
 function toggleFixHeader() {
   let scrollHeight = window.pageYOffset,
       introHeight = intro.clientHeight - header.offsetHeight;
   
-  if (scrollHeight >= introHeight && !header.classList.contains("fixed")) {
-    header.classList.add("fixed");
+  if (scrollHeight >= introHeight && !header.classList.contains('fixed')) {
+    header.classList.add('fixed');
   } 
-  if (scrollHeight < introHeight && header.classList.contains("fixed")) {
-    header.classList.remove("fixed");
+  if (scrollHeight < introHeight && header.classList.contains('fixed')) {
+    header.classList.remove('fixed');
   }
 }
 
-document.addEventListener("scroll", toggleFixHeader);
+document.addEventListener('scroll', toggleFixHeader);
 toggleFixHeader();
 
 
@@ -61,7 +67,7 @@ function smoothScroll() {
   requestAnimationFrame(animation);
 }
 
-document.addEventListener("click", smoothScroll)
+document.addEventListener('click', smoothScroll)
 
 
 
@@ -71,11 +77,11 @@ function accordionToggle(pressedClassName, changedClassName) {
   if(!element) return;
   event.preventDefault();
 
-  element.closest(changedClassName).classList.toggle("active");
+  element.closest(changedClassName).classList.toggle('active');
 }
 
-document.addEventListener("click", () => {
-  accordionToggle(".accordion__header", ".accordion__item")
+document.addEventListener('click', () => {
+  accordionToggle('.accordion__header', '.accordion__item')
 })
 
 
@@ -114,7 +120,7 @@ class Сarousel {
     this.itemLeft += 100;
     this.firstItem.style.marginLeft = `${this.itemLeft}%`;
     
-    this.firstItem.addEventListener("transitionend", () => this.firstItem.classList.remove(this.transitionClass)); // add bind, for is correct working "this"
+    this.firstItem.addEventListener('transitionend', () => this.firstItem.classList.remove(this.transitionClass)); // add bind, for is correct working 'this'
   }
 
   moveNext() {
@@ -123,17 +129,17 @@ class Сarousel {
     this.itemLeft -= 100;
     this.firstItem.style.marginLeft = `${this.itemLeft}%`;
     
-    this.firstItem.addEventListener("transitionend", () => this.firstItem.classList.remove(this.transitionClass)); // add bind, for is correct working "this"
+    this.firstItem.addEventListener('transitionend', () => this.firstItem.classList.remove(this.transitionClass)); // add bind, for is correct working 'this'
   }
 }
 
-const carouselReviewDark = new Сarousel("dark reviews__btn", "dark reviews__show-container", "services__item--transition");
+const carouselReviewDark = new Сarousel('dark reviews__btn', 'dark reviews__show-container', 'services__item--transition');
 
-document.addEventListener("click", () => carouselReviewDark.move());
+document.addEventListener('click', () => carouselReviewDark.move());
 
 
 /* Slider White*/
-const carouselReviewWhite = new Сarousel("white reviews__btn", "white reviews__show-container", "services__item--transition");
+const carouselReviewWhite = new Сarousel('white reviews__btn', 'white reviews__show-container', 'services__item--transition');
 
-document.addEventListener("click", () => carouselReviewWhite.move());
+document.addEventListener('click', () => carouselReviewWhite.move());
 })()
