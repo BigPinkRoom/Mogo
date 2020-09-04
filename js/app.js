@@ -133,13 +133,13 @@ class Сarousel {
   }
 }
 
-const carouselReviewDark = new Сarousel('dark reviews__btn', 'dark reviews__show-container', 'services__item--transition');
+const carouselReviewDark = new Сarousel('dark-reviews__btn', 'dark-reviews__show-container', 'services__item--transition');
 
 document.addEventListener('click', () => carouselReviewDark.move());
 
 
 /* Slider White*/
-const carouselReviewWhite = new Сarousel('white reviews__btn', 'white reviews__show-container', 'services__item--transition');
+const carouselReviewWhite = new Сarousel('white-reviews__btn', 'white-reviews__show-container', 'services__item--transition');
 
 document.addEventListener('click', () => carouselReviewWhite.move());
 })()
