@@ -16,7 +16,6 @@ body {
 :focus,:active{outline: none;}
 a:focus,a:active{outline: none;}
 
-
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
     font-size: inherit;
